@@ -1,13 +1,14 @@
 package cz.erstegroup.example.demo.utils.properties;
 
-import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import java.io.*;
 import java.util.Properties;
 
-@Service
-public class ConsumerPropertiesUtils implements PropertiesReader {
+/**
+ * The implementation reads the property for consuming API.
+ */
+final public class ConsumerPropertiesUtils implements PropertiesReader {
     public static final String FILE_NAME = "config/consumer.properties";
 
     public static final String TRANSPARENT_ACCOUNTS_URL_PROPERTY_NAME = "transparentAccountsUrl";
@@ -19,7 +20,7 @@ public class ConsumerPropertiesUtils implements PropertiesReader {
 
     private Properties props;
 
-    ConsumerPropertiesUtils() throws IOException {
+    public ConsumerPropertiesUtils() throws IOException {
         loadProperties(FILE_NAME);
     }
 

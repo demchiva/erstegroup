@@ -1,10 +1,13 @@
 package cz.erstegroup.example.demo.model.combined;
 
-import javax.persistence.Entity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
+@Schema(
+        title = "Erste Combined Accounts with Products Response Body",
+        description = "Returns details about Erste transparent accounts combined with product."
+)
 public class CombinedResult implements Serializable {
     private String accountNumber;
     private List<CombinedProduct> products;
