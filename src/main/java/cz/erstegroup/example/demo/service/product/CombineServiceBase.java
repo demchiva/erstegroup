@@ -3,10 +3,12 @@ package cz.erstegroup.example.demo.service.product;
 import cz.erstegroup.example.demo.model.account.TransparentAccountWrapper;
 import cz.erstegroup.example.demo.model.combined.CombinedResults;
 import cz.erstegroup.example.demo.model.product.ProductWrapper;
+import org.springframework.stereotype.Service;
 
 /**
  * The service base for combine transparent accounts with product functionality.
  */
+@Service
 public interface CombineServiceBase {
     /**
      * The method combine the transparent accounts with products.

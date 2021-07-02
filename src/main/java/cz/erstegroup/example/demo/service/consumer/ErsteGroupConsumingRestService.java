@@ -1,8 +1,9 @@
 package cz.erstegroup.example.demo.service.consumer;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
@@ -10,9 +11,13 @@ import java.util.Collections;
 /**
  * The implementation of ApiCaller for czech statistical center.
  */
+@Service
 public class ErsteGroupConsumingRestService implements ApiCaller {
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+
+    public ErsteGroupConsumingRestService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     public RestTemplate getRestTemplate() {

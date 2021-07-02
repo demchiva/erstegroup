@@ -2,9 +2,10 @@ package cz.erstegroup.example.demo.service.consumer;
 
 import cz.erstegroup.example.demo.utils.properties.ConsumerPropertiesUtils;
 import cz.erstegroup.example.demo.utils.properties.PropertiesReader;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
@@ -12,14 +13,18 @@ import java.util.Collections;
 /**
  * The implementation of ApiCaller for czech statistical center.
  */
+@Service
 public class CzechStatisticalCenterConsumerRestService implements ApiCaller {
     private static final String CZECH_STATISTICAL_CENTER_HEADER = "x-api-key";
 
-    @Autowired
-    private PropertiesReader consumerPropertiesReader;
+    private final PropertiesReader consumerPropertiesReader;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+
+    public CzechStatisticalCenterConsumerRestService(PropertiesReader consumerPropertiesReader, RestTemplate restTemplate) {
+        this.consumerPropertiesReader = consumerPropertiesReader;
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     public RestTemplate getRestTemplate() {

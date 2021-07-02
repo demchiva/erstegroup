@@ -20,31 +20,31 @@ import java.io.IOException;
 @Configuration
 @EnableCaching
 public class CombineConfig {
-
-    /**
-     * Caller for the Erste transparent account REST services.
-     * @return
-     */
-    @Bean(name = "ersteGroupConsumingRestService")
-    public ApiCaller ersteGroupConsumingRestService() {
-        return new ErsteGroupConsumingRestService();
-    }
-
-    /**
-     * Caller for the czech statistical center REST services.
-     * @return
-     */
-    @Bean(name = "czechStatisticalCenterConsumerRestService")
-    public ApiCaller czechStatisticalCenterConsumerRestService() {
-        return new CzechStatisticalCenterConsumerRestService();
-    }
+//
+//    /**
+//     * Caller for the Erste transparent account REST services.
+//     * @return
+//     */
+//    @Bean(name = "ersteGroupConsumingRestService")
+//    public ApiCaller ersteGroupConsumingRestService() {
+//        return new ErsteGroupConsumingRestService();
+//    }
+//
+//    /**
+//     * Caller for the czech statistical center REST services.
+//     * @return
+//     */
+//    @Bean(name = "czechStatisticalCenterConsumerRestService")
+//    public ApiCaller czechStatisticalCenterConsumerRestService() {
+//        return new CzechStatisticalCenterConsumerRestService();
+//    }
 
     /**
      * The properties reader for consuming services.
      * @return
      * @throws IOException
      */
-    @Bean(name = "consumerPropertiesUtils")
+    @Bean
     public PropertiesReader consumerPropertiesUtils() throws IOException {
         return new ConsumerPropertiesUtils();
     }
