@@ -7,6 +7,7 @@ import cz.erstegroup.example.demo.service.product.CombineService;
 import cz.erstegroup.example.demo.service.product.CombineServiceBase;
 import cz.erstegroup.example.demo.utils.properties.ConsumerPropertiesUtils;
 import cz.erstegroup.example.demo.utils.properties.PropertiesReader;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +25,7 @@ public class CombineConfig {
      * Caller for the Erste transparent account REST services.
      * @return
      */
-    @Bean
+    @Bean(name = "ersteGroupConsumingRestService")
     public ApiCaller ersteGroupConsumingRestService() {
         return new ErsteGroupConsumingRestService();
     }
@@ -33,7 +34,7 @@ public class CombineConfig {
      * Caller for the czech statistical center REST services.
      * @return
      */
-    @Bean
+    @Bean(name = "czechStatisticalCenterConsumerRestService")
     public ApiCaller czechStatisticalCenterConsumerRestService() {
         return new CzechStatisticalCenterConsumerRestService();
     }
@@ -43,7 +44,7 @@ public class CombineConfig {
      * @return
      * @throws IOException
      */
-    @Bean
+    @Bean(name = "consumerPropertiesUtils")
     public PropertiesReader consumerPropertiesUtils() throws IOException {
         return new ConsumerPropertiesUtils();
     }
@@ -52,7 +53,7 @@ public class CombineConfig {
      * The service for combine transparent accounts with products.
      * @return
      */
-    @Bean
+    @Bean(name = "combineService")
     public CombineServiceBase combineServiceBase() {
         return new CombineService();
     }
