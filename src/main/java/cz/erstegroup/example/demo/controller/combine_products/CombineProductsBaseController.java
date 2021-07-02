@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -47,6 +48,7 @@ interface CombineProductsBaseController {
             description = "Returns page of Erste transparent accounts combined with products"
     )
     @GetMapping("/combinedResults")
+    @ResponseBody
     String getTransparentAccountsWithProducts() throws URISyntaxException;
 
     @ApiResponses(
@@ -76,5 +78,6 @@ interface CombineProductsBaseController {
             description = "Returns page of Erste transparent accounts combined with products amount of witch more them given amount"
     )
     @GetMapping("/combinedProductsMoreThanAmount")
+    @ResponseBody
     String getTransparentAccountsWithProductsMoreThanGivenAmount(@RequestParam(name = "amount") @Min(0) @Max(100_000) final Double amount) throws URISyntaxException;
 }
