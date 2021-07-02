@@ -1,6 +1,6 @@
 package cz.erstegroup.example.demo.utils.properties;
 
-import org.springframework.util.ResourceUtils;
+import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
 import java.util.Properties;
@@ -30,8 +30,7 @@ final public class ConsumerPropertiesUtils implements PropertiesReader {
 
     public void loadProperties(final String fileName) throws IOException {
         props = new Properties();
-        File file = ResourceUtils.getFile("classpath:" + fileName);
-        InputStream in = new FileInputStream(file);
+        InputStream in = new ClassPathResource(fileName).getInputStream();
         props.load(in);
     }
 }
