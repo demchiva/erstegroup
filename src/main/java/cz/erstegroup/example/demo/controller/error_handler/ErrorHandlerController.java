@@ -37,6 +37,6 @@ public class ErrorHandlerController {
     @ExceptionHandler(Exception.class)
     public void handleIOException(final Exception exception, final ServletWebRequest webRequest) throws Exception {
         assert webRequest.getResponse() != null;
-        webRequest.getResponse().sendError(HttpStatus.SERVICE_UNAVAILABLE.value());
+        webRequest.getResponse().sendError(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED.value());
     }
 }
