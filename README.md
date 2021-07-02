@@ -25,7 +25,8 @@ Example of response body:
         ]
     }
     
-Whole documentation of API is available [here](http://localhost:8080/swagger-ui.html) after launch of application.
+Whole documentation of API is available on localhost [here](http://localhost:8080/swagger-ui.html) after launch of application.
+Also you can use deployed using Heroku version [here](https://erste-api-consumer.herokuapp.com/swagger-ui/index.html?configUrl=/api-docs/swagger-config#/).
     
 ## Code hierarchy
 
