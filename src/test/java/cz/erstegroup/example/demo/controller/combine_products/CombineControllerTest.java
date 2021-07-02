@@ -20,7 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -72,6 +71,7 @@ class CombineControllerTest {
         final CombinedResults results = getCombinedResult();
 
         when(combineServiceBase.combineAccountsWithProduct(any(), any())).thenReturn(results);
+        when(combineServiceBase.combineAccountsWithProductMoreThanAmount(any(), any(), anyDouble())).thenReturn(results);
 
         when(ersteApiCaller.getResult(any(), any())).thenReturn(new TransparentAccountWrapper());
         when(cscApiCaller.getResult(any(), any())).thenReturn(new ProductWrapper());
@@ -85,7 +85,7 @@ class CombineControllerTest {
     @Test
     public void testCombineAccountsWithProduct() throws Exception {
         final CombinedResults results = getCombinedResult();
-        final MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/combinedResults"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/combinedResults"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.combinedResults.[*]", Matchers.hasSize(1)))
                 .andExpect(jsonPath("$.combinedResults.[0].accountNumber").value(results.getCombinedResults().get(0).getAccountNumber()))
@@ -93,5 +93,24 @@ class CombineControllerTest {
                 .andExpect(jsonPath("$.combinedResults.[0].products.[0].description").value(results.getCombinedResults().get(0).getProducts().get(0).getDescription()))
                 .andExpect(jsonPath("$.combinedResults.[0].products.[0].place").value(results.getCombinedResults().get(0).getProducts().get(0).getPlace()))
                 .andReturn();
+    }
+
+    @Test
+    public void testCombineAccountsWithProductGreaterThenGivenAmountWithSuccess() throws Exception {
+        final CombinedResults results = getCombinedResult();
+        mockMvc.perform(MockMvcRequestBuilders.get("/combinedProductsMoreThanAmount").queryParam("amount", "20"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.combinedResults.[*]", Matchers.hasSize(1)))
+                .andExpect(jsonPath("$.combinedResults.[0].accountNumber").value(results.getCombinedResults().get(0).getAccountNumber()))
+                .andExpect(jsonPath("$.combinedResults.[0].products.[0].amount").value(results.getCombinedResults().get(0).getProducts().get(0).getAmount()))
+                .andExpect(jsonPath("$.combinedResults.[0].products.[0].description").value(results.getCombinedResults().get(0).getProducts().get(0).getDescription()))
+                .andExpect(jsonPath("$.combinedResults.[0].products.[0].place").value(results.getCombinedResults().get(0).getProducts().get(0).getPlace()))
+                .andReturn();
+    }
+
+    @Test
+    public void testCombineAccountsWithProductGreaterThenGivenAmountWithError() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/combinedProductsMoreThanAmount").queryParam("amount", "-2"))
+                .andExpect(status().isBadRequest());
     }
 }
