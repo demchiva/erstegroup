@@ -6,7 +6,8 @@ Second it is possible to evaluate how people are rich in some products.
 In future, it can be extended and combine more than one product for evaluation.
 It is also possible to track the "consumer basket" for real evaluation of inflation.
 
-Use path **/combinedProducts** for get the combination of account number with amount of product and product description.
+Use path **/combinedResults** for get the combination of account number with amount of product and product description.
+Use path **/combinedProductsMoreThanAmount?amount={}** for get the combination of account number with amount greater than given parameter of product and product description.
 
 Example of response body:
 
