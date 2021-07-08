@@ -1,4 +1,4 @@
-package cz.erstegroup.example.demo.service.consumer;
+package cz.erstegroup.example.demo.service.consumer.caller;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

@@ -4,7 +4,6 @@ import cz.erstegroup.example.demo.service.product.CombineService;
 import cz.erstegroup.example.demo.service.product.CombineServiceBase;
 import cz.erstegroup.example.demo.utils.properties.ConsumerPropertiesUtils;
 import cz.erstegroup.example.demo.utils.properties.PropertiesReader;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +13,6 @@ import java.io.IOException;
  * Configuration class for consuming external REST API.
  */
 @Configuration
-@EnableCaching
 public class CombineConfig {
     /**
      * The properties reader for consuming services.

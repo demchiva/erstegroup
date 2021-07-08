@@ -1,4 +1,4 @@
-package cz.erstegroup.example.demo.service.consumer;
+package cz.erstegroup.example.demo.service.consumer.caller;
 
 import cz.erstegroup.example.demo.utils.properties.ConsumerPropertiesUtils;
 import cz.erstegroup.example.demo.utils.properties.PropertiesReader;

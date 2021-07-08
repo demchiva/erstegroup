@@ -6,7 +6,7 @@ import cz.erstegroup.example.demo.model.combined.CombinedProduct;
 import cz.erstegroup.example.demo.model.combined.CombinedResult;
 import cz.erstegroup.example.demo.model.combined.CombinedResults;
 import cz.erstegroup.example.demo.model.product.ProductWrapper;
-import cz.erstegroup.example.demo.service.consumer.ApiCaller;
+import cz.erstegroup.example.demo.service.consumer.caller.ApiCaller;
 import cz.erstegroup.example.demo.service.product.CombineServiceBase;
 import cz.erstegroup.example.demo.utils.properties.ConsumerPropertiesUtils;
 import cz.erstegroup.example.demo.utils.properties.PropertiesReader;
@@ -22,13 +22,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Collections;
-
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = {DemoApplication.class})
 @AutoConfigureMockMvc()

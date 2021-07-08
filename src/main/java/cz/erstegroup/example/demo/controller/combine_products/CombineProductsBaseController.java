@@ -49,7 +49,7 @@ interface CombineProductsBaseController {
     )
     @GetMapping("/combinedResults")
     @ResponseBody
-    String getTransparentAccountsWithProducts() throws URISyntaxException;
+    String getTransparentAccountsWithProducts() throws URISyntaxException, InterruptedException;
 
     @ApiResponses(
             value = {
